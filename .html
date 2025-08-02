@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CellVision AI - Features</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 80px 0 60px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3)); }
+            to { filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.5)); }
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .feature-card:hover::before {
+            animation: shimmer 1.5s ease-in-out;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .feature-description {
+            line-height: 1.6;
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .feature-list li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        .tech-stack {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-stack h2 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .tech-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .tech-category {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .tech-category:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.02);
+        }
+
+        .tech-category h3 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #e0e7ff;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .getting-started {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 40px;
+        }
+
+        .getting-started h2 {
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .step {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #4ade80;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #4ade80;
+            color: #000;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .step h3 {
+            margin-bottom: 15px;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            margin-top: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow-x: auto;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #4ade80, #22c55e);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(74, 222, 128, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(74, 222, 128, 0.4);
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1>CellVision AI</h1>
+            <p class="subtitle">Advanced AI-powered dashboard for researchers and medical professionals to analyze, classify, and visualize cell images using cutting-edge deep learning and computer vision technology.</p>
+        </header>
+
+        <section class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">🔬</span>
+                <h3 class="feature-title">Single Image Prediction</h3>
+                <p class="feature-description">Upload a cell image for instant benign/malignant classification with confidence scores and detailed analysis.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📊</span>
+                <h3 class="feature-title">Batch Analysis</h3>
+                <p class="feature-description">Upload CSV files containing multiple images for large-scale predictions, view result distributions, and export comprehensive batch results.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📈</span>
+                <h3 class="feature-title">Metrics & Evaluation</h3>
+                <p class="feature-description">Upload ground-truth labels to generate detailed metrics, confusion matrices, and comprehensive performance reports.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🖼️</span>
+                <h3 class="feature-title">Example Images</h3>
+                <p class="feature-description">Browse random samples of benign and malignant cell images for reference and educational purposes.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🛠️</span>
+                <h3 class="feature-title">OpenCV Tools</h3>
+                <p class="feature-description">Apply and visualize advanced image processing and augmentation techniques:</p>
+                <ul class="feature-list">
+                    <li>Grayscale conversion</li>
+                    <li>Gaussian Blur & Canny Edge Detection</li>
+                    <li>Adaptive Threshold & Contour Detection</li>
+                    <li>CLAHE Enhancement</li>
+                    <li>Image Rotation & Flip Operations</li>
+                    <li>Gaussian Noise Addition</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🔢</span>
+                <h3 class="feature-title">Cell Counting</h3>
+                <p class="feature-description">Automated cell counting and size distribution analysis for microscopy images with precise measurement capabilities.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">⏱️</span>
+                <h3 class="feature-title">Time-lapse Analysis</h3>
+                <p class="feature-description">Track and analyze cell count changes across sequences of images for temporal studies and growth pattern analysis.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📝</span>
+                <h3 class="feature-title">Session History</h3>
+                <p class="feature-description">Access and export all predictions and results for reproducibility, audit trails, and research documentation.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🧠</span>
+                <h3 class="feature-title">Model Information</h3>
+                <p class="feature-description">View detailed information about the ResNet-18 model architecture, training datasets, and latest performance updates.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🤖</span>
+                <h3 class="feature-title">Researcher Chatbot</h3>
+                <p class="feature-description">Ask medical research questions and receive expert answers via integration with PubMed and Gemini APIs for comprehensive research support.</p>
+            </div>
+        </section>
+
+        <section class="tech-stack">
+            <h2>🛠️ Tech Stack</h2>
+            <div class="tech-categories">
+                <div class="tech-category">
+                    <h3>Frontend & UI</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">Custom CSS</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3>AI & Computer Vision</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Torchvision</span>
+                        <span class="tech-tag">ResNet-18</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">PIL</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3>Data Processing</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3>Visualization</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Matplotlib</span>
+                        <span class="tech-tag">Seaborn</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3>APIs & Utilities</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">PubMed API</span>
+                        <span class="tech-tag">Gemini API</span>
+                        <span class="tech-tag">Requests</span>
+                        <span class="tech-tag">XML</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3>Session Management</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Streamlit Session State</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="getting-started">
+            <h2>📥 Getting Started</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Clone Repository</h3>
+                    <p>Get the source code from GitHub</p>
+                    <div class="code-block">git clone https://github.com/&lt;username&gt;/cellvision-ai.git<br>cd cellvision-ai</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Install Dependencies</h3>
+                    <p>Install all required Python packages</p>
+                    <div class="code-block">pip install -r requirements.txt</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Run Application</h3>
+                    <p>Start the Streamlit dashboard</p>
+                    <div class="code-block">streamlit run app.py</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Access Dashboard</h3>
+                    <p>Open your browser and navigate to the local server</p>
+                    <div class="code-block">http://localhost:8501</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2 style="margin-bottom: 20px;">Ready to Start Analyzing?</h2>
+            <p style="margin-bottom: 30px; opacity: 0.9;">Experience the power of AI-driven cell image analysis</p>
+            <button class="cta-button" onclick="scrollToTop()">🚀 Launch CellVision AI</button>
+        </section>
+    </div>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Add smooth scrolling animation on page load
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+
+        // Add parallax effect to floating elements
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const elements = document.querySelectorAll('.floating-element');
+            elements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Add interactive hover effects
+        document.querySelectorAll('.tech-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.background = 'rgba(74, 222, 128, 0.3)';
+                this.style.borderColor = 'rgba(74, 222, 128, 0.5)';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.background = 'rgba(255, 255, 255, 0.2)';
+                this.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+            });
+        });
+    </script>
+</body>
+</html>
