@@ -43,7 +43,7 @@
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/<your-username-or-org>/cellvision-ai.git
+   git clone https://github.com/leksialevin7700/cellvision-ai.git
    cd cellvision-ai
    ```
 
