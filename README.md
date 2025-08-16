@@ -1,10 +1,10 @@
-# CellVision AI
+# 🧬 CellVision AI
 
 **CellVision AI** is an advanced AI-powered dashboard designed for researchers and medical professionals to analyze, classify, and visualize cell images. The platform leverages deep learning and computer vision to empower efficient, accurate, and interactive cancer cell image analysis.
 
 ---
 
-## Features
+## 🚀 Features
 
 - **Single Image Prediction:** Upload a cell image for instant benign/malignant classification with confidence scores.
 - **Batch Analysis:** Upload a CSV of images for large-scale predictions, view result distributions, and export batch results.
@@ -28,14 +28,22 @@
 
 ---
 
-##  Tech Stack
+## 📊 Project Visualization  
 
-- **Frontend/UI:** Streamlit, Custom CSS
-- **Deep Learning & Computer Vision:** PyTorch, Torchvision, ResNet-18, OpenCV, PIL
-- **Data Processing & Analysis:** Pandas, NumPy, Scikit-learn
-- **Visualization:** Matplotlib, Seaborn
-- **Utilities & APIs:** Requests, PubMed API, Gemini API, XML, OS, Random, Datetime, IO
-- **Session Management:** Streamlit Session State
+You can explore a demo/visual overview of **CellVision AI** here:  
+
+[![Watch the Demo](https://img.shields.io/badge/▶️%20Watch%20Demo-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://drive.google.com/file/d/1zESqNwTT3qc-HpwFKauR1oarrPsvsQkO/view?usp=sharing)
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend/UI:** Streamlit, Custom CSS  
+- **Deep Learning & Computer Vision:** PyTorch, Torchvision, ResNet-18, OpenCV, PIL  
+- **Data Processing & Analysis:** Pandas, NumPy, Scikit-learn  
+- **Visualization:** Matplotlib, Seaborn  
+- **Utilities & APIs:** Requests, PubMed API, Gemini API, XML, OS, Random, Datetime, IO  
+- **Session Management:** Streamlit Session State  
 
 ---
 
@@ -45,20 +53,3 @@
    ```bash
    git clone https://github.com/leksialevin7700/cellvision-ai.git
    cd cellvision-ai
-   ```
-
-2. **Install the requirements:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Run the Streamlit app:**
-   ```bash
-   streamlit run app.py
-   ```
-
-4. **Access the dashboard:**
-   - Open your browser and go to `http://localhost:8501`
-
----
-
