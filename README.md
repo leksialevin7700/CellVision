@@ -4,7 +4,7 @@
 
 ---
 
-## 🚀 Features
+## Features
 
 - **Single Image Prediction:** Upload a cell image for instant benign/malignant classification with confidence scores.
 - **Batch Analysis:** Upload a CSV of images for large-scale predictions, view result distributions, and export batch results.
@@ -28,7 +28,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Frontend/UI:** Streamlit, Custom CSS
 - **Deep Learning & Computer Vision:** PyTorch, Torchvision, ResNet-18, OpenCV, PIL
